@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>EDIT</h1>
+  <form action="{% url "articles:update" article.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="title" value="{{ article.title }}">
+    <textarea name="content">{{ article.content }}</textarea> 
+    {% comment %} textarea는 value 속성이 없어서 tag 안쪽에 써줘야 {% endcomment %}
+    {% comment %} 좀 큰 입력 박스 == textarea {% endcomment %}
+    {% comment %} 데이터 전송은 key = value(사용자입력) 형태로 전송된다! {% endcomment %}
+    <input type="submit">
+  </form>
+</body>
+</html>
